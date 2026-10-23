@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Truco con los compas</title>
+  <meta name="description" content="Truco argentino porteño multijugador: armá una sala, pasá el código y jugá con los compas de la oficina." />
+  <meta name="theme-color" content="#1a0f0a" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧉</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Rye&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+</head>
+<body>
+  <div id="scene" aria-hidden="true"></div>
+
+  <main id="app">
+    <!-- Menú principal -->
+    <section id="screen-menu" class="screen">
+      <div class="menu-card">
+        <h1 class="logo"><span class="logo-top">Truco</span><span class="logo-sub">con los compas</span></h1>
+        <p class="tagline">Mesa de bar, mate y mentiras. Como en el barrio, pero en la oficina.</p>
+        <div id="player-badge" class="player-badge"></div>
+        <label class="field">
+          <span>Tu nombre (o apodo de barrio)</span>
+          <input id="name-input" maxlength="20" placeholder="Ej: El Tano" autocomplete="nickname" />
+        </label>
+        <div class="menu-grid">
+          <button class="btn btn-big btn-gold" data-action="local-2">🃏 Jugar contra El Guapo <small>1 vs 1 con bot</small></button>
+          <button class="btn btn-big" data-action="local-4">👥 Parejas con bots <small>2 vs 2</small></button>
+          <button class="btn btn-big btn-neon" data-action="create-room">🏠 Crear sala para la oficina <small>pasá el código a tus compas</small></button>
+        </div>
+        <form id="join-form" class="join-form">
+          <input id="code-input" maxlength="6" placeholder="CÓDIGO" autocomplete="off" />
+          <button class="btn btn-neon" type="submit">Entrar a la sala</button>
+        </form>
+        <div class="menu-links">
+          <button class="btn btn-ghost" data-action="help">📖 Cómo se juega</button>
+          <button class="btn btn-ghost" data-action="ranking">🏆 Mi ranking</button>
+          <button class="btn btn-ghost" data-action="music">🎵 Música</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sala de espera -->
+    <section id="screen-lobby" class="screen hidden">
+      <div class="lobby-card" id="lobby"></div>
+    </section>
+
+    <!-- La mesa -->
+    <section id="screen-game" class="screen hidden">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn" data-action="leave" title="Salir">⬅</button>
+          <span id="room-label" class="room-label"></span>
+        </div>
+        <div id="scoreboard" class="scoreboard"></div>
+        <div class="topbar-right">
+          <button class="icon-btn" data-action="music" title="Música">🎵</button>
+          <button class="icon-btn" data-action="voice" title="Voces">🗣️</button>
+          <button class="icon-btn" data-action="help" title="Reglas">📖</button>
+          <button class="icon-btn" data-action="toggle-guide" title="Bot Guía">🧉</button>
+          <button class="icon-btn only-mobile" data-action="toggle-chat" title="Chat">💬</button>
+        </div>
+      </header>
+      <div class="table-area">
+        <div class="table-wrap">
+          <div class="table" id="table">
+            <div class="table-felt"></div>
+            <div id="played" class="played"></div>
+            <div id="table-center" class="table-center"></div>
+          </div>
+          <div id="seats" class="seats"></div>
+        </div>
+        <div id="status" class="status"></div>
+        <div id="actions" class="actions"></div>
+        <div id="my-hand" class="my-hand"></div>
+      </div>
+      <aside id="guide" class="guide"></aside>
+      <div id="banner" class="banner"></div>
+      <div id="fp-layer" class="fp-layer"></div>
+      <div id="result" class="result hidden"></div>
+    </section>
+
+    <aside id="chat" class="chat hidden"></aside>
+  </main>
+
+  <div id="modal" class="modal hidden"></div>
+  <div id="toasts" class="toasts"></div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
