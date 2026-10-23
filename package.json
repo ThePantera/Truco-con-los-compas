@@ -1,0 +1,20 @@
+{
+  "name": "truco-con-los-compas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Truco argentino porteño multijugador para jugar con los compas de la oficina",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "peerjs": "^1.5.5"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  }
+}
